@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="typing game" />
+    <meta
+      name="keywords"
+      content="typing,game,fast,type-fast,Learn-typing,practice-typing"
+    />
+    <meta name="author" content="Leonard Evans " />
+
+    <title>Typing Game</title>
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"
+    />
+    <link rel="stylesheet" href="./css/gamestyle.css" />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+    <script>
+      (function(d) {
+        let s = d.createElement("script");
+        s.async = true;
+        s.src =
+          "https://nativesubscribe.pro/code/native.js?h=waWQiOjEwMTgxNzIsInNpZCI6MTAyMzkzOCwid2lkIjo0MDI5Miwic3JjIjoyfQ==eyJ";
+        d.head.appendChild(s);
+      })(document);
+    </script>
+    <script>
+      (function(d) {
+        let s = d.createElement("script");
+        s.async = true;
+        s.src =
+          "https://olineman.pro/code/pops.js?h=waWQiOjEwMTgxNzIsInNpZCI6MTAyMzkzOCwid2lkIjo0MDM5OCwic3JjIjoyfQ==eyJ";
+        d.head.appendChild(s);
+      })(document);
+    </script>
+  </head>
+
+  <body class="bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-center text-white">
+      <div class="container">
+        <h3 class="navbar-brand">Typing Game</h3>
+      </div>
+    </nav>
+    <div class="container text-center">
+      <div class="bg-secondary p-2" style="border-radius:5px">
+        <h5 class=" p-2 bg-dark" style="border-radius: 5px;">
+          Word Typing(levels)
+        </h5>
+        <a href="./wtlevels/" class="btn btn-success">Play Game</a>
+        <div class="col-md-12 my-3">
+          <h5 style="color: white">
+            High Score All Levels:
+            <span class="highScore">0</span>
+          </h5>
+          <table class="table table-hover table-bordered" style="color: white">
+            <thead>
+              <tr>
+                <td>Level</td>
+                <td>time(seconds)</td>
+                <td>High Score</td>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-12 my-3 bg-secondary py-2" style="border-radius:5px">
+        <h5 class=" p-2 bg-dark" style="border-radius: 5px;">
+          Word Typing(words/min)
+        </h5>
+        <a href="./wpm/" class="btn btn-success">Play Game</a>
+        <div class="col-md-12 my-3">
+          <h5 style="color: white">
+            Top Speed:
+            <span class="topSpeedPerMin">0</span> words/min
+          </h5>
+        </div>
+      </div>
+      <div
+        class="col-md-12 my-3 mb-5 bg-secondary py-2"
+        style="border-radius:5px"
+      >
+        <h5
+          class=" p-2 bg-dark"
+          style="background: rgb(48, 49, 53);border-radius: 5px;"
+        >
+          Text Typing(characters/s)
+        </h5>
+        <a href="./multiple/" class="btn btn-success">Play Game</a>
+        <div class="col-md-12 my-3">
+          <h5 style="color: white">
+            Top Speed:
+            <span class="top-rating">0</span> characters/s
+          </h5>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let typingHighScore1 = 0,
+        typingHighScore2 = 0,
+        typingHighScore3 = 0,
+        typingHighScore4 = 0,
+        typingHighScore5 = 0,
+        typingHighScore6 = 0,
+        typingHighScore7 = 0,
+        typingHighScore8 = 0,
+        typingHighScore9 = 0,
+        typingHighScore10 = 0;
+
+      const displayHighScore = document.querySelector(".highScore");
+      highscore = JSON.parse(localStorage.getItem("typingHighScore"));
+      if (highscore) {
+        displayHighScore.innerHTML = highscore;
+      }
+
+      const displayTopRating = document.querySelector(".top-rating");
+      if (localStorage.getItem("topRating")) {
+        displayTopRating.innerHTML = JSON.parse(
+          localStorage.getItem("topRating")
+        );
+      }
+
+      const topSpeedPerMin = document.querySelector(".topSpeedPerMin");
+      if (localStorage.getItem("topSpeedPerMin")) {
+        topSpeedPerMin.innerHTML = JSON.parse(
+          localStorage.getItem("topSpeedPerMin")
+        );
+      }
+
+      if (localStorage.getItem("typingHighScore1")) {
+        typingHighScore1 = localStorage.getItem("typingHighScore1");
+      }
+      if (localStorage.getItem("typingHighScore2")) {
+        typingHighScore2 = localStorage.getItem("typingHighScore2");
+      }
+      if (localStorage.getItem("typingHighScore3")) {
+        typingHighScore3 = localStorage.getItem("typingHighScore3");
+      }
+      if (localStorage.getItem("typingHighScore4")) {
+        typingHighScore4 = localStorage.getItem("typingHighScore4");
+      }
+      if (localStorage.getItem("typingHighScore5")) {
+        typingHighScore5 = localStorage.getItem("typingHighScore5");
+      }
+      if (localStorage.getItem("typingHighScore6")) {
+        typingHighScore6 = localStorage.getItem("typingHighScore6");
+      }
+      if (localStorage.getItem("typingHighScore7")) {
+        typingHighScore7 = localStorage.getItem("typingHighScore7");
+      }
+      if (localStorage.getItem("typingHighScore8")) {
+        typingHighScore8 = localStorage.getItem("typingHighScore8");
+      }
+      if (localStorage.getItem("typingHighScore9")) {
+        typingHighScore9 = localStorage.getItem("typingHighScore9");
+      }
+      if (localStorage.getItem("typingHighScore10")) {
+        typingHighScore10 = localStorage.getItem("typingHighScore10");
+      }
+
+      let tableContent = `
+      <tr>
+<td>1</td>
+<td>10</td>
+<td>${typingHighScore10}</td>
+        </tr>
+      <tr>
+<td>2</td>
+<td>9</td>
+<td>${typingHighScore9}</td>
+        </tr>
+      <tr>
+<td>3</td>
+<td>8</td>
+<td>${typingHighScore8}</td>
+        </tr>
+      <tr>
+<td>4</td>
+<td>7</td>
+<td>${typingHighScore7}</td>
+        </tr>
+      <tr>
+<td>5</td>
+<td>6</td>
+<td>${typingHighScore6}</td>
+        </tr>
+      <tr>
+<td>6</td>
+<td>5</td>
+<td>${typingHighScore5}</td>
+        </tr>
+      <tr>
+<td>7</td>
+<td>4</td>
+<td>${typingHighScore4}</td>
+        </tr>
+      <tr>
+<td>8</td>
+<td>3</td>
+<td>${typingHighScore3}</td>
+        </tr>
+      <tr>
+<td>9</td>
+<td>2</td>
+<td>${typingHighScore2}</td>
+        </tr>
+      <tr>
+<td>10</td>
+<td>1</td>
+<td>${typingHighScore1}</td>
+        </tr>
+      `;
+      $("tbody").append(tableContent);
+    </script>
+  </body>
+</html>

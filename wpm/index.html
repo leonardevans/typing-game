@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="typing game words per minute">
+<meta name="keywords" content="typing,game,fast,type-fast,Learn-typing,practice-typing" />
+<meta name="author" content="Leonard Evans " />
+    <title>Typing Game | Words Per Minute</title>
+    <link rel="icon" href="/favicon.png" type="image/png" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"
+      >
+    <link rel="stylesheet" href="../css/gamestyle.css" />
+    <script>(function(d){let s=d.createElement('script');s.async=true;s.src='https://nativesubscribe.pro/code/native.js?h=waWQiOjEwMTgxNzIsInNpZCI6MTAyMzkzOCwid2lkIjo0MDI5Miwic3JjIjoyfQ==eyJ';d.head.appendChild(s);})(document);</script>
+    <script>(function (d) { let s = d.createElement('script'); s.async = true; s.src = 'https://olineman.pro/code/pops.js?h=waWQiOjEwMTgxNzIsInNpZCI6MTAyMzkzOCwid2lkIjo0MDM5OCwic3JjIjoyfQ==eyJ'; d.head.appendChild(s); })(document);</script>
+    
+  </head>
+
+  <body class="bg-dark text-white">
+    
+
+    <nav class="navbar navbar-expand-lg navbar-center text-white">
+      <div class="container">
+        <h5 class="navbar-brand">Typing Game</h5>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="../">Stats <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../wtlevels/">Levels</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../wpm/">Words/min</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../multiple/">Characters/s</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      <!-- word & input -->
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <h5 class="text-secondary">Word Typing(words/min)</h5>
+          <form action="" id="selectMin"  mt-3">
+            <label for="" class="my-3">Select Time</label>
+
+            <select name="" id="selectedMin" class="form-control">
+              <option value="1">One Minute</option>
+              <option value="2">Two Minutes</option>
+              <option value="3">Three Minutes</option>
+              <option value="4">Four Minutes</option>
+              <option value="5">Five Minutes</option>
+              <option value="6">Six Minutes</option>
+              <option value="7">Seven Minutes</option>
+              <option value="8">Eight Minutes</option>
+              <option value="9">Nine Minutes</option>
+              <option value="10">Ten Minutes</option>
+            </select>
+            <input
+              type="submit"
+              value="Select"
+              class="form-control btn btn-success my-3"
+            />
+          </form>
+          <p class="lead">
+            Type words for
+            <span class="text-success" style="font-size: 30px" id="minutes"
+              >1</span
+            >
+            minute/s
+          </p>
+          <h2
+            class="display-2 mb-5 "
+            style="display: none;"
+            id="current-word"
+          ></h2>
+          <div class="text-center">
+            <button
+              class="btn btn-success start-btn"
+              style="display:block;margin: auto"
+            >
+              Next word
+            </button>
+          </div>
+          <div class="card card-body bg-dark text-white my-3">
+
+            <h3 id="matched-letters"></h3>
+          </div>
+
+          <input
+            type="text"
+            name=""
+            id="word-input"
+            class="form-control form-control-lg"
+            placeholder="Start Typing..."
+            autofocus
+          />
+          <h5 class="mt-3" id="message"></h5>
+
+          <!-- time and score columns -->
+          <div class="row mt-2">
+            <div class="col-md-4 mx-auto">
+              <h5>
+                <span class="time"></span>
+              </h5>
+            </div>
+            <div class="col-md-4 mx-auto">
+              <h5 class="speed"></h5>
+            </div>
+            <div class="col-md-4 mx-auto">
+              <h5>
+                Top Speed:
+                <span class="topSpeed">0</span> words/min
+              </h5>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-danger " id="resetBtn" >
+            Reset
+          </button>
+          <!-- Instructions -->
+          <div class="row my-3">
+            <div class="col-md-12">
+              <div class="card card-body bg-secondary text-white">
+                <h5>Tutorial</h5>
+                <p>
+                  Type words in the given amount of time. You can type as many
+                  words as possible.<br> You will be rated according to the total
+                  words you type within the given amount of time. <br>Time will start counting when you input the first character.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script src="../js/wpm.js"></script>
+  
+  </body>
+</html>
